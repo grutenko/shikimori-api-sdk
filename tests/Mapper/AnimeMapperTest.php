@@ -9,7 +9,9 @@
 
 namespace Grutenko\Shikimori\Test\Mapper;
 
+use Cartalyst\Collections\Collection;
 use Grutenko\Shikimori\Api;
+use Grutenko\Shikimori\Entity\Anime;
 use Grutenko\Shikimori\Exception\NotFoundException;
 use Grutenko\Shikimori\Mapper\AnimeMapper;
 use PHPUnit\Framework\TestCase;
@@ -33,10 +35,10 @@ class AnimeMapperTest extends TestCase
     public function testSuccessGetById()
     {
         $cowboyBebopId = 1;
-        $arData = $this->animeMapper->find($cowboyBebopId);
+        $anime = $this->animeMapper->find($cowboyBebopId);
 
-        $this->assertIsArray($arData);
-        $this->assertEquals($arData['id'], $cowboyBebopId);
+        $this->assertInstanceOf(Anime::class, $anime);
+        $this->assertEquals($anime->id, $cowboyBebopId);
     }
 
     /**
@@ -69,9 +71,9 @@ class AnimeMapperTest extends TestCase
         $cowboyBebopId = 1;
 
         try {
-            $arData = $this->animeMapper->findOrFail($cowboyBebopId);
-            $this->assertIsArray($arData);
-            $this->assertEquals($arData['id'], $cowboyBebopId);
+            $anime = $this->animeMapper->findOrFail($cowboyBebopId);
+            $this->assertInstanceOf(Anime::class, $anime);
+            $this->assertEquals($anime->id, $cowboyBebopId);
         } catch(NotFoundException $e)
         {
             $this->fail('NotFoundException is thrown at 1:Cowboy Bebop anime.');
@@ -84,7 +86,7 @@ class AnimeMapperTest extends TestCase
     public function testSuccessGetListWithoutFilter()
     {
         $animes = $this->animeMapper->list();
-        $this->assertIsArray($animes);
+        $this->assertInstanceOf(Collection::class, $animes);
     }
 
     /**
@@ -94,7 +96,7 @@ class AnimeMapperTest extends TestCase
     {
         $animes = $this->animeMapper->paginate(['limit' => 50], 3);
 
-        $this->assertCount(150, $animes);
-        $this->assertArrayHasKey('id', $animes[0]);
+        $this->assertEquals(150, $animes->count());
+        $this->assertTrue( isset($animes[0]->id) );
     }
 }

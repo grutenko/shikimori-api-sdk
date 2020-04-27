@@ -83,7 +83,7 @@ class AnimeMapper extends Mapper
             $params['page'] = $page;
             $chunk = $this->list($params);
 
-            if( null == $chunk || 0 == $chunk->count() || $page >= $pages) {
+            if( null == $chunk || 0 == $chunk->count() || $page > $pages) {
                 break;
             }
 

@@ -46,4 +46,12 @@ abstract class Entity
     {
         return isset($this->data[$name]);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return "";
+    }
 }

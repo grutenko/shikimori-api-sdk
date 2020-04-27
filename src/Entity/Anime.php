@@ -76,10 +76,11 @@ class Anime extends Entity
             return null;
         }
 
-        if($this->status == 'released' && $this->episodes_aired == 0) {
-            return $this->getEpisodesCount();
+        switch($this->status) {
+            case 'released': return $this->getEpisodesCount(); break;
+            case 'ongoing': return $this->episodes_aired; break;
+            default: return 0;
         }
-        return $this->episodes_aired;
     }
 
     /**
@@ -96,7 +97,6 @@ class Anime extends Entity
 
     /**
      * @return DateTime|null
-     * @throws Exception
      */
     public function getAiredOn(): ?DateTime
     {
