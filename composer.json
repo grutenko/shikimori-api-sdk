@@ -16,7 +16,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Grutenko\\Shikimori\\Test\\": "tests/"
+            "Grutenko\\Shikimori\\Test\\": "test/phpunit/"
         }
     },
     "minimum-stability": "stable",
