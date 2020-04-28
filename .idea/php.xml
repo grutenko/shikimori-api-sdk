@@ -37,6 +37,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/cartalyst/collections" />
+      <path value="$PROJECT_DIR$/vendor/quazardous/php-bump-version" />
+      <path value="$PROJECT_DIR$/vendor/vanilla/garden-cli" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
