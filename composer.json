@@ -19,6 +19,9 @@
             "Grutenko\\Shikimori\\Test\\": "test/phpunit/"
         }
     },
+    "scripts": {
+        "bump-minor-version": "./vendor/bin/bump_version bump --minor"
+    },
     "minimum-stability": "stable",
     "require": {
         "ext-curl": "*",
@@ -28,6 +31,7 @@
         "cartalyst/collections": "^1.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "quazardous/php-bump-version": "^1.0"
     }
 }
