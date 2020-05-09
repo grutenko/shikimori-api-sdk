@@ -8,6 +8,20 @@ use Grutenko\Shikimori\Exception\NotFoundException;
 class AnimeMapper extends Mapper
 {
     /**
+     * @param $id
+     * @return array|null
+     */
+    public function findExternalLinks($id): ?array
+    {
+        $arLinks = $this->api->fetch("animes/{$id}/external_links");
+        if($this->api->lastRequestInfo['http_code'] != 200) {
+            return null;
+        }
+
+        return $arLinks;
+    }
+
+    /**
      * @param int $id
      * @return Anime|null
      */
