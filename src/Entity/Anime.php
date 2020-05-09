@@ -32,6 +32,8 @@ use GuzzleHttp\Psr7;
  * @property mixed|null user_rate
  * @property mixed|null name
  * @property mixed|null id
+ * @property mixed|null anons
+ * @property mixed|null ongoing
  */
 class Anime extends Entity
 {
@@ -49,6 +51,22 @@ class Anime extends Entity
     {
         parent::__construct($data);
         $this->detail = $isDetail;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isAnons(): ?bool
+    {
+        return $this->isDetail() ? $this->anons : null;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isOngoing(): ?bool
+    {
+        return $this->isDetail() ? $this->ongoing : null;
     }
 
     /**
