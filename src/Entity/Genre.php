@@ -19,6 +19,15 @@ class Genre extends Entity
     /**
      * @return string
      */
+    public function getUrl(): string
+    {
+        $filteredName = str_replace(' ', '-', $this->name);
+        return "https://shikimori.one/animes/genre/{$this->id}-{$filteredName}";
+    }
+
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return "[{$this->id}] {$this->name}\r\n";
